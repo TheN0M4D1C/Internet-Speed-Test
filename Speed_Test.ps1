@@ -127,4 +127,5 @@ $UnsortedResults = $SpeedsArray | Sort-Object speed -Descending
 
 $WanSpeed = $UnsortedResults[0].speed
 
+#Make sure you create this directory!!!
 $WanSpeed | Out-File C:\Apps\Temp\InternetSpeed.txt
