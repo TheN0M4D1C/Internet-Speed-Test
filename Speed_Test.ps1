@@ -114,24 +114,17 @@ foreach($val in $cons)
 $serverinformation = $serverinformation | Sort-Object -Property sponsor -Unique
 $serverinformation = $serverinformation  | Sort-Object -Property distance
 
-#Write-Host " "
-
 #Gets the download speed of 8 of the closest servers
 for($s = 0; $s -lt 8; $s++)
 {
 
     $Test1 = Servers($serverinformation[$s].url)
     $SpeedsArray += @([pscustomobject]@{Speed = $Test1;})
-    #Write-Host "Wan Speed of Server$($s+1) is $($Test1) Mbit/Sec using the following server $($serverinformation[$s].url)"
 }
-
-#Write-Host " "
 
 #Sorts the download speeds by highest speed first
 $UnsortedResults = $SpeedsArray | Sort-Object speed -Descending
 
 $WanSpeed = $UnsortedResults[0].speed
 
-#Write-Host "The Fastest Wan Speed is $($Wanspeed) Mbit/Sec"
-
-$WanSpeed | Out-File C:\Apps\Scripts\InternetSpeed.txt
+$WanSpeed | Out-File C:\Apps\Temp\InternetSpeed.txt
